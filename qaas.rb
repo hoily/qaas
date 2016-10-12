@@ -1,6 +1,11 @@
 #!/usr/bin/env ruby
 require 'sinatra'
-f = File.open(__FILE__)
-get '/', provides: 'text/plain' do 
-	f
+
+contents = ''
+File.open __FILE__ do |f|
+	contents = f.read
+end
+
+get '/', provides: 'text/plain' do
+	contents
 end
